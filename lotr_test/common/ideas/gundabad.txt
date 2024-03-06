@@ -1,0 +1,25 @@
+ideas = {
+
+	country = {
+		GUN_avenge_yazneg = {
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = FRA_scw_intervention_republicans_focus
+
+			modifier = {
+				army_speed_factor = 0.05
+				army_attack_factor = 0.1
+				war_support_factor = 0.15
+			}
+		}
+	}
+}
+

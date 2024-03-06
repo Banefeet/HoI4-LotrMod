@@ -1,0 +1,68 @@
+grumbling_greyfurs_idea_upgrade = {
+    if = {
+        limit = {
+            has_idea = VAL_grumbling_greyfurs_0
+        }
+		swap_ideas = {
+			remove_idea = VAL_grumbling_greyfurs_0
+			add_idea = VAL_grumbling_greyfurs_1
+		}
+    }
+    else_if = {
+        limit = {
+            has_idea = VAL_grumbling_greyfurs_1
+        }
+		swap_ideas = {
+			remove_idea = VAL_grumbling_greyfurs_1
+			add_idea = VAL_grumbling_greyfurs_2
+		}
+    }
+    else_if = {
+        limit = {
+            has_idea = VAL_grumbling_greyfurs_2
+        }
+		swap_ideas = {
+			remove_idea = VAL_grumbling_greyfurs_2
+			add_idea = VAL_grumbling_greyfurs_3
+		}
+    }
+    else_if = {
+        limit = {
+            has_idea = VAL_grumbling_greyfurs_3
+        }
+		swap_ideas = {
+			remove_idea = VAL_grumbling_greyfurs_3
+			add_idea = VAL_grumbling_greyfurs_4
+		}
+    }
+    else_if = {
+        limit = {
+            has_idea = VAL_grumbling_greyfurs_4
+        }
+		swap_ideas = {
+			remove_idea = VAL_grumbling_greyfurs_4
+			add_idea = VAL_grumbling_greyfurs_5
+		}
+    }
+    else_if = {
+        limit = {
+            has_idea = VAL_grumbling_greyfurs_5
+        }
+		swap_ideas = {
+			remove_idea = VAL_grumbling_greyfurs_5
+			add_idea = VAL_grumbling_greyfurs_6
+		}
+    }
+    else_if = {
+        limit = {
+            has_idea = VAL_grumbling_greyfurs_6
+        }
+		swap_ideas = {
+			remove_idea = VAL_grumbling_greyfurs_6
+			add_idea = VAL_grumbling_greyfurs_7
+		}
+    }
+    else = {
+        custom_effect_tooltip = VAL_tooltip_grumblers_idea_upgrade
+    }
+}

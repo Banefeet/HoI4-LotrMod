@@ -1,0 +1,42 @@
+##### Division Templates #####
+
+division_template = {
+	name = "Éothéod Cavalry" 
+	is_locked = yes
+	priority = 2
+
+	regiments = {
+		light_armor = { x = 0 y = 0 }
+		light_armor = { x = 0 y = 1 }
+		light_armor = { x = 0 y = 2 }
+		light_armor = { x = 1 y = 0 }
+		light_armor = { x = 1 y = 1 }
+		light_armor = { x = 1 y = 2 }
+		light_armor = { x = 2 y = 0 }
+		light_armor = { x = 2 y = 1 }
+		light_armor = { x = 2 y = 2 }
+			}
+	support = {
+		armored_recon = { x = 0 y = 0 }
+				}
+			}
+
+##### OOB #####
+units = {
+	##### LAND UNITS #####
+	division = {
+		name = "Heirs of Eorl"
+		location = 2727
+		division_template = "Éothéod Cavalry"
+		start_experience_factor = 0.25
+		start_equipment_factor = 1
+	}
+
+	division = {
+		name = "Riders of Framsburg"
+		location = 2727
+		division_template = "Éothéod Cavalry"
+		start_experience_factor = 0.25
+		start_equipment_factor = 1
+	}
+}

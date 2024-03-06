@@ -1,0 +1,41 @@
+﻿l_english:
+ABILITY_TOOLTIP_NAME:0 "$NAME|H$"
+####ANDUIN EVENTS
+anduin.1d:0 "Welcome to the Vales! Between the Misty Mountains and Mirkwood, ours is a beautiful land. The Beornings, young and old, Woodsmen, Stoors, and Éothéod live here side-by-side. You have two modifiers. The Stoors of Ninglor and the Lower Anduin Vale are basically autonomous and do not partake in the dealings outside of their towns. Then there are the eagles of the Misty Mountains, swooping down to hunt livestock in High Pass and the Northern Fells. We will have to deal with them in due time."
+
+  ####EREBOR WAR IN THE MOUNTAINS
+anduin.2d:0 "After having seized the Dwarvish diplomat, tensions have escalated further. We are now in a state of all-out war. If we manage to capture Withibord, the Dwarves will lose face and end the war. If they manage to capture Greylin, they'll have what they wanted."
+anduin.3.a:0 "Celebrate"
+anduin.3d:0 "We have beaten the Dwarves at their own game and showed that Yavanna is superior to Aule. We will let the diplomat return home, but shall keep Withibord and its hinterland."
+erebor.7d:0 "The foolish beornings first seized our diplomat, then continued to further antagonize us. We will get our diplomat back, through violence if Beorn so desires! "
+erebor.8d:0 "We sent a diplomat to discuss with Beorn a transaction of the westernmost tip of the Grey Mountains for North Mirkwood, but the fool imprisoned our diplomat. We will have to get him back in due time!"
+erebor.9d:0 "On this day, we have proven the might of beard over bear. In the town of Greylin, we discovered where our diplomat was held. We freed him, and seized the region as the beornings fled."
+erebor.9.a:0 "Hurrah!"
+
+  ####VARIOUS MIRKWOOD EVENTS
+anduin.6.a:0 "A jar of honey from Carrock"
+anduin.6.b:0 "A sculpted wooden deer from Leodholt"
+anduin.6.c:0 "A rotten fish from Fenholm"
+
+####GUNDABAD EVENTS
+gundabad.3.t:0 "Bear attack!"
+gundabad.3.d:0 "In a vile attack, Beorn has slain our leader Yazneg. How should we respond?"
+gundabad.3.a:0 "With fury"
+gundabad.3.b:0 "Not at all"
+
+####VICTORY POINTS
+VICTORY_POINTS_2727: "Ruins of Framsburg"
+VICTORY_POINTS_4753: "Fenholm"
+VICTORY_POINTS_4108: "Maethelburg"
+VICTORY_POINTS_2994: "Leodholt"
+VICTORY_POINTS_704: "Withibord"
+
+####SCRIPTED EFFECTS
+VAL_tooltip_grumblers_idea_upgrade:0 "Once you have the Grumbling Greyfurs national spirit this will intensify the effects"
+
+
+
+####TAG RENAMES
+CON_VAL_confederacy:0 "The Vales Confederacy"
+CON_VAL_confederacy_DEF:0 "The Vales Confederacy"
+CON_VAL_confederacy_ADJ:0 "Confederate"

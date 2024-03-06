@@ -1,0 +1,191 @@
+###########################
+# Anduin Events
+###########################
+
+add_namespace = anduin
+
+
+# Opening Event
+country_event = {
+	id = anduin.1
+	title = "Welcome to the Vales"
+	desc = "anduin.1d"
+
+	is_triggered_only = yes
+	on_startup = {
+		effect = { 
+			VAL = { 
+				country_event ={ id = anduin.1 = 31 random_days = 27} }
+		}
+	}
+
+	picture = GFX_report_event_cele_gala
+}
+
+# War in the Mountains
+country_event = {
+	id = anduin.2
+	title = "The War in the Mountains"
+	desc = "anduin.2d"
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_cele_gala
+}
+
+country_event = {
+	id = anduin.3
+	title = "Peace in the Mountains"
+	desc = "anduin.3d"
+
+	Only_trigger_once = yes
+		Trigger = {
+    		VAL = {
+        		controls_province = 704 
+         		has_war_with = ERE
+     }
+}
+
+	option = { 
+		name = anduin.3.a
+		white_peace = ERE
+		193 = { 
+			transfer_state_to = VAL
+		}
+	}
+	picture = GFX_report_event_cele_gala
+}	
+
+	####Sale of North Mirkwood Outskirts
+country_event = {
+	id = anduin.4
+	title = "The Mirkwood Deal Declined"
+	desc = "anduin.4d"
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = anduin.4.a
+		add_state_core = 193
+	}
+	picture = GFX_report_event_cele_gala
+}	
+
+	####Cooperative Mirkwood Events
+country_event = {
+	id = anduin.5
+	title = "Attempt Diplomacy"
+	desc = "anduin.5d"
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = anduin.5.a
+		VAL = { add_opinion_modifier = { target = MIR modifier = failed_diplomacy } }
+	}
+
+	option = { 
+		name = anduin.5.b
+		VAL = { add_opinion_modifier = { target = MIR modifier = succesful_diplomacy } }
+		MIR = { add_opinion_modifier = { target = VAL modifier = succesful_diplomacy } }
+	}
+
+	picture = GFX_report_event_cele_gala
+}	
+
+country_event = {
+	id = anduin.6
+	title = "A Kingly Gift"
+	desc = "anduin.6d"
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = anduin.6.a
+		VAL = { 
+			add_political_power = -75
+			}
+		MIR = {country_event = { id = mirkwood.16 } }
+
+	}
+
+	option = { 
+		name = anduin.6.b
+		VAL = { 
+			add_political_power = -150
+			}
+		MIR = {country_event = { id = mirkwood.17 } }
+	}
+
+	option = { 
+		name = anduin.6.c
+		MIR = {country_event = { id = mirkwood.18 } }
+	}
+
+	picture = GFX_report_event_cele_gala
+}
+####COOPERATIVE DORWINION INTERACTION
+country_event = {
+	id = anduin.7
+	title = "Dorwinion Accepts"
+	desc = "anduin.7d"
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = anduin.7.a
+		add_ideas = VAL_dorwinion_wine
+	}
+
+	picture = GFX_report_event_cele_gala
+}
+
+country_event = {
+	id = anduin.8
+	title = "Dorwinion Declines"
+	desc = "anduin.8d"
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = anduin.8.a
+			add_popularity = {
+       			ideology = unaligned
+        		popularity = 0.05
+			}
+	}
+
+	picture = GFX_report_event_cele_gala
+}
+
+####Belligerent Mirkwood Events
+
+country_event = {
+	id = anduin.9
+	title = "The Mirkwood Incident"
+	desc = "anduin.9d"
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = anduin.9.a
+		198 = {
+			damage_building = {
+    			type = infrastructure
+    			damage = 2
+				}
+			damage_building = {
+    			type = industrial_complex
+    			damage = 2
+				}
+			}
+	}
+
+	picture = GFX_report_event_cele_gala
+}

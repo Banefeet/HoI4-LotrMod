@@ -1,0 +1,12 @@
+on_actions = {
+	# country: Anduin
+	on_startup = {
+		effect = { 
+			VAL = { 
+				country_event ={ id = anduin.1 = 31 random_days = 27} }
+		    }
+	    }
+
+	picture = GFX_report_event_cele_gala
+    }
+}

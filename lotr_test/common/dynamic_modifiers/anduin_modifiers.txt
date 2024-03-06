@@ -1,0 +1,18 @@
+stoors = {
+	icon = GFX_modifiers_conscription_exemptions_granted
+	
+	recruitable_population_factor = -0.90
+	state_production_speed_industrial_complex_factor = -0.50
+	state_production_speed_arms_factory_factor = -0.50
+	state_production_speed_infrastructure_factor = -0.50
+}
+
+nearby_eagles = {
+	icon = GFX_modifiers_sabotaged_resource
+	
+	local_factory_sabotage = 0.05
+	enemy_attrition = 0.1
+	state_production_speed_industrial_complex_factor = -0.10
+	state_production_speed_arms_factory_factor = -0.10
+	state_production_speed_infrastructure_factor = -0.10
+}

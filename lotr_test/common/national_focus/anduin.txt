@@ -1,0 +1,4012 @@
+focus_tree = {
+	id = anduin
+
+	country = {
+		factor=0
+		modifier = {
+			add = 10
+			tag = VAL
+		}
+	}
+	default = no
+	reset_on_civilwar = no
+  
+	####Political Branch
+
+	focus = {
+		id = VAL_the_house_of_beorn
+		icon = GFX_goal_lth_anduin_flag
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		#mutually_exclusive = {}
+		#prerequisite = {}
+		#available = {}
+	
+		x = 32
+		y = 0
+		cost = 5
+		available_if_capitulated = yes
+		
+		completion_reward = { 
+			add_political_power = 50
+		}
+	}
+
+
+	####Unaligned Path
+	focus = {
+	id = VAL_the_bear_sleeps
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_house_of_beorn
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_house_of_beorn }
+	mutually_exclusive = { focus = VAL_the_bear_wakes }
+	mutually_exclusive = { focus = VAL_the_bear_attacks }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_hibernation_0
+		}
+	}
+
+	focus = {
+	id = VAL_empower_the_old_beornings
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bear_sleeps
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_bear_sleeps }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_the_vale_greyfurs_0
+		activate_advisor = VAL_grimbeorn
+		complete_national_focus =  VAL_our_small_friends 
+		complete_national_focus =  VAL_the_wings_of_the_mountains
+		}
+	}
+
+	focus = {
+	id = VAL_forget_the_éothéod
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_empower_the_old_beornings
+	x = 2
+	y = 1
+	prerequisite = { focus = VAL_empower_the_old_beornings }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		69 = { 
+				remove_building = { type = industrial_complex 
+									level = 1 
+									}
+			}
+		71 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex
+				 							  level = 1 
+											  instant_build = yes 
+											  }
+			}
+
+		remove_ideas = VAL_memories_of_the_éothéod_0
+		}
+	}
+
+	focus = {
+	id = VAL_introduce_third_breakfast
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_empower_the_old_beornings
+	x = -2
+	y = 1
+	prerequisite = { focus = VAL_empower_the_old_beornings }
+	cost = 5
+	available = { has_completed_focus = VAL_reach_a_compromise }
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_third_breakfast_in_the_vale_0
+		}
+	}
+
+	focus = {
+	id = VAL_our_own_path
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_empower_the_old_beornings
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_empower_the_old_beornings }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = VAL_hibernation_0
+			add_idea = VAL_hibernation_1
+			}
+		}
+	}
+	
+	focus = {
+	id = VAL_mirkwood
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_own_path
+	x = 0
+	y = 3
+	prerequisite = { focus = VAL_our_own_path }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		activate_advisor = VAL_jarnrek
+		}
+	}
+		
+	focus = {
+	id = VAL_the_question_of_north_mirkwood
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_mirkwood
+	x = 3
+	y = 1
+	prerequisite = { focus = VAL_mirkwood }
+	cost = 2
+	available = { 
+		VAL = {
+			controls_state = 193
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 50
+		}
+	}
+			
+	focus = {
+	id = VAL_it_is_rightfully_ours
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_question_of_north_mirkwood
+	x = 0
+	y = 1
+	mutually_exclusive = { focus = VAL_return_it_for_concessions }
+	mutually_exclusive = { focus = VAL_a_deal_with_the_elves }
+	prerequisite = { focus = VAL_the_question_of_north_mirkwood }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_state_core = 193
+		}
+	}
+			
+	focus = {
+	id = VAL_return_it_for_concessions
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_question_of_north_mirkwood
+	x = 2
+	y = 1
+	mutually_exclusive = { focus = VAL_it_is_rightfully_ours }
+	mutually_exclusive = { focus = VAL_a_deal_with_the_elves }
+	prerequisite = { focus = VAL_the_question_of_north_mirkwood }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		ERE = {
+			country_event = { id = erebor.10 }
+			}
+		}
+	}
+				
+	focus = {
+	id = VAL_a_deal_with_the_elves
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_question_of_north_mirkwood
+	x = 4
+	y = 1
+	mutually_exclusive = { focus = VAL_it_is_rightfully_ours }
+	mutually_exclusive = { focus = VAL_return_it_for_concessions }
+	prerequisite = { focus = VAL_the_question_of_north_mirkwood }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		MIR = {
+			country_event = { id = mirkwood.14 }
+			}
+		}
+	}
+									
+	focus = {
+	id = VAL_return_of_the_necromancer
+	icon = GFX_goal_mor_dark_dol_guldur_fortress
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_mirkwood
+	x = -3
+	y = 1
+	prerequisite = { focus = VAL_mirkwood }
+	cost = 5
+	available = {
+		DGU = {
+			exists = yes
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		198 = {
+			add_building_construction = { type = bunker 
+				 							  level = 5
+											  instant_build = yes 
+											  province = 6335
+											  }
+			add_building_construction = { type = bunker 
+				 							  level = 5
+											  instant_build = yes 
+											  province = 6316
+											  }		
+			add_building_construction = { type = bunker 
+				 							  level = 5
+											  instant_build = yes 
+											  province = 4630
+											  }											  						  
+			}
+		}
+	}
+			
+	focus = {
+	id = VAL_cast_out_the_shadow
+	icon = GFX_goal_mor_dark_dol_guldur_fortress
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_return_of_the_necromancer
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_return_of_the_necromancer }
+	cost = 10
+	available = {
+		DGU = {
+			exists = yes
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		create_wargoal = {
+			type = take_state_focus
+			target = DGU
+			generator = { 87 }
+			}
+		}
+	}
+				
+	focus = {
+	id = VAL_return_amon_lanc
+	icon = GFX_goal_mor_dark_dol_guldur_fortress
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_cast_out_the_shadow
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_cast_out_the_shadow }
+	prerequisite = { focus = VAL_formalise_the_borders }
+	available = { 
+		VAL = {
+			controls_state = 87
+			}
+		}
+	cost = 2
+	available_if_capitulated = yes
+	completion_reward = {
+		MIR = {
+			country_event = { id = mirkwood.15 }
+			}
+		}
+	}
+	
+	focus = {
+	id = VAL_lunacy_in_the_forest
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_mirkwood
+	x = 1
+	y = 1
+	mutually_exclusive = { focus = VAL_all_clear }
+	prerequisite = { focus = VAL_mirkwood }
+	cost = 10
+	available_if_capitulated = yes
+	available = { 
+		MIR = {
+			OR = { 
+			has_government = belligerent
+			has_government = revolutionary
+				}
+			}
+		}
+	completion_reward = {
+			71 = {
+			add_building_construction = { type = bunker
+				 							  level = 3 
+											  instant_build = yes
+											  province = 5957 
+											  }		
+			}
+
+			199 = {
+			add_building_construction = { type = infrastructure
+				 							  level = 1 
+											  instant_build = yes
+											  province = 4630 
+											  }					
+			}
+
+			198 = {
+			add_building_construction = { type = supply_node
+				 							  level = 1 
+											  instant_build = yes
+											  province = 2994 
+											  }	
+			add_building_construction = { type = rail_way
+				 							  level = 1 
+											  instant_build = yes
+											  province = 1232
+											  }		
+			add_building_construction = { type = rail_way
+				 							  level = 1 
+											  instant_build = yes
+											  province = 2994
+											  }	
+			add_building_construction = { type = bunker
+				 							  level = 3 
+											  instant_build = yes
+											  province = 2994
+											  }	
+			add_building_construction = { type = bunker
+				 							  level = 3 
+											  instant_build = yes
+											  province = 2769
+											  }												  									  								  								  				
+			}
+		}
+	}
+		
+	focus = {
+	id = VAL_prepare_for_the_worst
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_lunacy_in_the_forest
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_lunacy_in_the_forest }
+	cost = 10
+	available_if_capitulated = yes
+	available = { 
+		MIR = {
+			OR = { 
+			has_government = belligerent
+			has_government = revolutionary
+				}
+			}
+	}
+	completion_reward = {
+		add_ideas = VAL_prepared_for_elvish_attack
+		}
+	}
+			
+	focus = {
+	id = VAL_strike_first
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_prepare_for_the_worst
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_prepare_for_the_worst }
+	cost = 10
+	available = { 
+		MIR = {
+			OR = { 
+			has_government = belligerent
+			has_government = revolutionary
+				}
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = VAL_hibernation_2
+			add_idea = VAL_hibernation_3
+			}
+		VAL = 
+			{ create_wargoal = 
+				{ type = puppet_wargoal_focus target = MIR } 
+				}
+			}
+		}
+	
+	focus = {
+	id = VAL_all_clear
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_mirkwood
+	x = -1
+	y = 1
+	mutually_exclusive = { focus = VAL_lunacy_in_the_forest }
+	prerequisite = { focus = VAL_mirkwood }
+	cost = 5
+	available = { 
+		MIR = {
+			OR = { 
+			has_government = unaligned
+			has_government = cooperative
+				}
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		VAL = { add_opinion_modifier = { target = MIR modifier = relieved_tensions } }
+		MIR = { add_opinion_modifier = { target = VAL modifier = relieved_tensions } }
+		add_political_power = 50
+		}
+	}
+	
+	focus = {
+	id = VAL_formalise_the_borders
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_all_clear
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_all_clear }
+	cost = 10
+	available_if_capitulated = yes
+	available = { 
+		MIR = {
+			OR = { 
+			has_government = unaligned
+			has_government = cooperative
+				}
+			}
+		}
+	completion_reward = {
+		VAL = { add_opinion_modifier = { target = MIR modifier = formalised_borders } }
+		MIR = { add_opinion_modifier = { target = VAL modifier = formalised_borders } }
+		add_political_power = 150
+		MIR = { add_political_power = 150 }
+				
+		}
+	}
+
+	focus = {
+	id = VAL_the_greed_of_dwarves
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_own_path
+	x = -2
+	y = 1
+	prerequisite = { focus = VAL_our_own_path }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		ERE = {
+			country_event = { id = erebor.8 }
+				}
+		VAL = { add_opinion_modifier = { target = ERE modifier = offended_sensibilities } }
+		ERE = { add_opinion_modifier = { target = VAL modifier = seized_diplomat } }
+		}
+	}
+
+	focus = {
+	id = VAL_a_major_misunderstanding
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_greed_of_dwarves
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_greed_of_dwarves }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		VAL = { 
+			country_event = { id = anduin.2 }
+			}
+		hidden_effect = { ERE = {
+			country_event = { id = erebor.7 }
+				}
+		}
+			
+		 ERE = {
+			declare_war_on = { 
+				target = VAL
+				type = annex_everything
+					}
+				}
+			}
+		}
+
+	focus = {
+	id = VAL_of_aule_and_yavanna
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_a_major_misunderstanding
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_a_major_misunderstanding }
+	cost = 5
+	available = { 
+		VAL = {
+			controls_state = 193
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_yavanna_ascendant
+		swap_ideas = {
+			remove_idea = VAL_hibernation_1
+			add_idea = VAL_hibernation_2
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_develop_carrock_vale
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_own_path
+	x = 2
+	y = 1
+	prerequisite = { focus = VAL_our_own_path }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+			71 = {
+			increase_state_category = yes
+			add_building_construction = { type = infrastructure
+				 							  level = 1 
+											  instant_build = yes 
+											  }			
+			add_building_construction = { type = industrial_complex
+				 							  level = 1 
+											  instant_build = yes 
+											  }
+			add_building_construction = { type = arms_factory
+				 							  level = 1 
+											  instant_build = yes 
+											  }
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_the_carrock_fortress
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_develop_carrock_vale
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_develop_carrock_vale }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+			71 = {
+			increase_state_category = yes
+			add_building_construction = { type = industrial_complex
+				 							  level = 2
+											  instant_build = yes 
+											  }
+			add_building_construction = { type = bunker 
+				 							  level = 3
+											  instant_build = yes 
+											  province = 5916
+											  }
+			add_building_construction = { type = bunker 
+				 							  level = 3
+											  instant_build = yes 
+											  province = 4874
+											  }
+			add_building_construction = { type = bunker 
+				 							  level = 3
+											  instant_build = yes 
+											  province = 1303
+											  }		
+			add_building_construction = { type = bunker 
+				 							  level = 3
+											  instant_build = yes 
+											  province = 6008
+											  }											  									  
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_include_the_eastern_bank
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_carrock_fortress
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_carrock_fortress }
+	cost = 15
+	available_if_capitulated = yes
+	completion_reward = {
+			199 = {
+			increase_state_category = yes
+			add_building_construction = { type = industrial_complex
+				 							  level = 1 
+											  instant_build = yes 
+											  }	
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 1774
+											  }		
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 6062
+											  }		
+			add_building_construction = { type = bunker 
+				 							  level = 3
+											  instant_build = yes 
+											  province = 4753
+											  }		
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 5287
+											  }		
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 1611
+											  }						  						  						  						  							  
+			}
+			198 = {
+			increase_state_category = yes
+			add_building_construction = { type = arms_factory
+				 							  level = 1 
+											  instant_build = yes 
+											  }
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 4977
+											  }		
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 2840
+											  }		
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 6240
+											  }	
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 1190
+											  }		
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 5482
+											  }		
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 6314
+											  }								  								  						  							  						  						  
+			}
+			196 = {
+			increase_state_category = yes
+			add_building_construction = { type = arms_factory
+				 							  level = 1 
+											  instant_build = yes 
+											  }
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 2070
+											  }			
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 3872
+											  }			
+			add_building_construction = { type = bunker 
+				 							  level = 2
+											  instant_build = yes 
+											  province = 5843
+											  }											  								  					  
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_repurpose_framsburg
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_own_path
+	x = -4
+	y = 1
+	prerequisite = { focus = VAL_our_own_path }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+			69 = {
+			add_building_construction = { type = bunker 
+				 							  level = 5
+											  instant_build = yes 
+											  province = 2727
+											  }		
+			add_building_construction = { type = bunker 
+				 							  level = 5
+											  instant_build = yes 
+											  province = 684
+											  }	
+			add_building_construction = { type = bunker 
+				 							  level = 5
+											  instant_build = yes 
+											  province = 1046
+											  }														  											  			
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_spit_in_their_eye
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_repurpose_framsburg
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_repurpose_framsburg }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		add_threat = 1
+		GUN = { add_timed_idea = { idea = VAL_bear_attack
+								   days = 365
+								   }
+			}
+		GUN = {
+				country_event = gundabad.3
+			}
+		GUN = { retire_character = GUN_Yazneg }
+		}
+	}
+
+	focus = {
+	id = VAL_defang_the_orcs
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_spit_in_their_eye
+	x = 0
+	y = 1
+	available = { 
+		VAL = {
+			controls_state = 61
+			}
+		}
+	prerequisite = { focus = VAL_spit_in_their_eye }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		release = GUN
+		61 = { 
+				remove_building = { type = industrial_complex 
+									level = 1 
+									}
+				remove_building = { type = arms_factory
+									level = 1 
+									}  
+                add_manpower = -500000								
+				}
+		71 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = { type = industrial_complex
+				 							  level = 1
+											  instant_build = yes 
+											  }
+			add_building_construction = { type = arms_factory
+				 							  level = 1
+											  instant_build = yes 
+											  }
+			add_resource = {
+				type = steel
+				amount = 16
+				}								  
+			}			
+		}
+	}
+
+	focus = {
+	id = VAL_the_greyfurs
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_own_path
+	x = 4
+	y = 1
+	prerequisite = { focus = VAL_our_own_path }
+	prerequisite = { focus = VAL_forget_the_éothéod }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = VAL_the_vale_greyfurs_0
+			add_idea = VAL_the_vale_greyfurs_1
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_cement_beorns_hold
+	icon = GFX_goal_support_unaligned
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_greyfurs
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_greyfurs }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = no_centralization
+			add_idea = moderate_centralization
+			}
+		swap_ideas = {
+			remove_idea = VAL_the_vale_greyfurs_1
+			add_idea = VAL_the_vale_greyfurs_2
+			}
+		}
+	}
+
+	####Cooperative Path
+	
+	focus = {
+	id = VAL_the_bear_wakes
+	icon = GFX_goal_support_cooperative
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_house_of_beorn
+	x = -11
+	y = 1
+	prerequisite = { focus = VAL_the_house_of_beorn }
+	mutually_exclusive = { focus = VAL_the_bear_sleeps }
+	mutually_exclusive = { focus = VAL_the_bear_attacks }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_vigilance
+		}
+	}
+	
+	focus = {
+	id = VAL_the_orcish_threat
+	icon = GFX_goal_support_cooperative
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bear_wakes
+	x = -2
+	y = 1
+	prerequisite = { focus = VAL_the_bear_wakes }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		add_popularity = {
+        ideology = cooperative
+        popularity = 0.05
+		}
+		add_ideas = VAL_orcish_threat_acknowledged
+		}
+	}
+	
+	focus = {
+	id = VAL_contact_Rohan
+	icon = GFX_goal_support_cooperative
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bear_wakes
+	x = 3
+	y = 1
+	prerequisite = { focus = VAL_the_bear_wakes }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_popularity = {
+        ideology = cooperative
+        popularity = 0.05
+			}
+	 	VAL = { add_opinion_modifier = { target = ROH modifier = bonds_of_kinship } }
+		ROH = { add_opinion_modifier = { target = VAL modifier = bonds_of_kinship } }
+		}	
+	}
+
+	focus = {
+	id = VAL_extend_our_hand
+	icon = GFX_goal_support_cooperative
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_contact_Rohan
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_contact_Rohan }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_popularity = {
+        ideology = cooperative
+        popularity = 0.05
+			}
+	 	VAL = { add_opinion_modifier = { target = DAL modifier = bonds_of_kinship } }
+		DAL = { add_opinion_modifier = { target = VAL modifier = bonds_of_kinship } }
+		}	
+	}
+	
+	focus = {
+	id = VAL_convince_beorn
+	icon = GFX_goal_support_cooperative
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bear_wakes
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_bear_wakes }
+	cost = 10
+	available_if_capitulated = yes
+	available = {
+		cooperative > 0.4
+	}
+	cancel_if_invalid = no
+	continue_if_invalid = yes
+	completion_reward = {
+		set_politics = {
+			ruling_party = cooperative
+   			elections_allowed = yes
+			}
+		activate_advisor = VAL_beorn
+		add_ideas = VAL_grumbling_greyfurs_0
+		complete_national_focus =  VAL_our_small_friends 
+		complete_national_focus =  VAL_the_wings_of_the_mountains
+		}
+	}
+	
+	focus = {
+	id = VAL_the_looming_shadow
+	icon = GFX_goal_sauron_eye
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_convince_beorn
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_convince_beorn }
+	cost = 10
+	available = { 
+		ISE = {
+			OR = { 
+			has_completed_focus = declareagainstsauron
+			has_government = belligerent
+				}
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_popularity = {
+       		ideology = cooperative
+    		popularity = 0.1
+			}
+		add_political_power = 100
+		}
+	}
+	
+	focus = {
+	id = VAL_supporting_our_kin
+	icon = GFX_goal_roh_rohan_flag
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_looming_shadow
+	x = 2
+	y = 1
+	prerequisite = { focus = VAL_the_looming_shadow }
+	prerequisite = { focus = VAL_contact_Rohan }
+	cost = 10
+	available = { 
+		OR = {
+			ISE = { 
+				has_completed_focus = pillagethetownsofrohan
+				}
+			MOR = {
+				has_completed_focus = war_with_rohan
+			}
+			threat > 0.2
+			}
+		}
+	bypass = {
+		ROH = {
+			has_government = belligerent
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_supporting_rohan
+		}
+	}
+	
+	focus = {
+	id = VAL_ride_of_the_éothéod
+	icon = GFX_goal_roh_rohan_flag
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_supporting_our_kin
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_supporting_our_kin }
+	cost = 10
+	cancel_if_invalid = no
+	continue_if_invalid = yes
+	available = {
+		ROH = {
+			has_war = yes
+			controls_state = 184
+			controls_state = 183
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		load_oob = "VAL_éothéod"
+		69 = {
+		create_unit = {
+    	division = 
+			"name = \"Éothéod Cavalry\" 
+			division_template = \"Éothéod Cavalry\" 
+			start_experience_factor = 0.25"
+    	owner = VAL
+		count = 2
+			}
+		swap_ideas = {
+			remove_idea = VAL_memories_of_the_éothéod_0
+			add_idea = VAL_memories_of_the_éothéod_1
+				}
+			}
+		}
+	}
+	
+	focus = {
+	id = VAL_resettle_framsburg
+	icon = GFX_goal_roh_rohan_flag
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_ride_of_the_éothéod
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_ride_of_the_éothéod }
+	cost = 10
+	cancel_if_invalid = no
+	continue_if_invalid = yes
+	available_if_capitulated = yes
+	available = { 
+		VAL = {
+			controls_state = 69
+			}
+		ISE = {
+			OR = { 
+			has_capitulated = yes
+			is_puppet = yes
+			has_government = cooperative
+				}
+			}
+		}
+	completion_reward = {
+
+		hidden_effect = {set_province_name = { id = 2727 name = "Framsburg" }}
+
+		69 = {
+			increase_state_category = yes
+			add_building_construction = { type = infrastructure
+				 							  level = 1 
+											  instant_build = yes 
+											  }			
+			add_building_construction = { type = industrial_complex
+				 							  level = 1 
+											  instant_build = yes 
+											  }
+			add_building_construction = { type = arms_factory
+				 							  level = 1 
+											  instant_build = yes 
+											  }
+			add_manpower = 1200000								  
+			}
+
+		swap_ideas = {
+			remove_idea = VAL_memories_of_the_éothéod_1
+			add_idea = VAL_memories_of_the_éothéod_2
+		}
+
+		grumbling_greyfurs_idea_upgrade = yes
+		}
+	}
+	
+	focus = {
+	id = VAL_the_doom_of_the_east
+	icon = GFX_goal_rhu_dale_flag
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_looming_shadow
+	x = 4
+	y = 1
+	prerequisite = { focus = VAL_the_looming_shadow }
+	prerequisite = { focus = VAL_extend_our_hand }
+	cost = 10
+	cancel_if_invalid = no
+	continue_if_invalid = yes
+	bypass = {
+		RHU = {
+			has_government = cooperative
+		}
+	}
+	available = { 
+	OR = {	
+		DOR = {
+			OR = { 
+			has_capitulated = yes
+			is_puppet = yes
+			has_government = belligerent
+				}
+			}
+		RHU = { 
+			controls_state = 137
+			controls_state = 103
+			}
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_popularity = {
+        ideology = cooperative
+        popularity = 0.1
+			}
+		VAL = { add_opinion_modifier = { target = ERE modifier = recognized_threat_of_rhun } }
+		ERE = { add_opinion_modifier = { target = VAL modifier = recognized_threat_of_rhun } }
+		VAL = { add_opinion_modifier = { target = DAL modifier = recognized_threat_of_rhun } }
+		DAL = { add_opinion_modifier = { target = VAL modifier = recognized_threat_of_rhun } }
+		}
+	}
+		
+	focus = {
+	id = VAL_the_war_in_the_north
+	icon = GFX_goal_rhu_dale_flag
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_doom_of_the_east
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_doom_of_the_east }
+	cost = 10
+	bypass = {
+		RHU = {
+			has_government = cooperative
+		}
+	}
+	cancel_if_invalid = no
+	continue_if_invalid = yes
+	available = { 
+	RHU = { 
+		OR = {
+			has_war_with = ERE
+			has_war_with = DAL
+			}
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_supporting_dale
+		grumbling_greyfurs_idea_upgrade = yes
+		}
+	}
+			
+	focus = {
+	id = VAL_lessons_from_the_east
+	icon = GFX_goal_rhu_dale_flag
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_war_in_the_north
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_war_in_the_north }
+	cost = 10
+	cancel_if_invalid = no
+	continue_if_invalid = yes
+	available = { 
+		RHU = {
+			OR = { 
+			exists = no
+			has_capitulated = yes
+			is_puppet = yes
+			has_government = cooperative
+				}
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_lessons_from_rhun
+		}
+	}
+
+	focus = {
+	id = VAL_deal_with_gundabad
+	icon = GFX_goal_mor_azog_orc_revolt
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_approach_the_king
+	x = -2
+	y = 1
+	prerequisite = { focus = VAL_the_looming_shadow }
+	prerequisite = { focus = VAL_the_orcish_threat }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		VAL = 
+			{ create_wargoal = 
+				{ type = puppet_wargoal_focus target = GUN } 
+				}
+		grumbling_greyfurs_idea_upgrade = yes
+		}
+	}
+	
+	focus = {
+	id = VAL_return_of_the_witch_king
+	icon = GFX_goal_witch_king
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_vales_confederacy
+	x = -5
+	y = 1
+	prerequisite = { focus = VAL_the_vales_confederacy }
+	cost = 10
+	available = { 
+		ANG = {
+			has_government = belligerent
+				}
+			}
+	available_if_capitulated = yes
+	completion_reward = {
+		VAL = 
+			{ create_wargoal = 
+				{ type = puppet_wargoal_focus target = ANG } 
+				}
+		}
+	}
+	
+	focus = {
+	id = VAL_greenwood_the_great
+	icon = GFX_goal_mir_radagast_the_brown
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_looming_shadow
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_looming_shadow }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		VAL = { 
+			country_event = { id = anduin.5 }
+			}
+		}
+	}
+	
+	focus = {
+	id = VAL_prepare_to_cleanse_the_forest
+	icon = GFX_goal_mir_thranduil
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_greenwood_the_great
+	mutually_exclusive = { focus = VAL_approach_the_king }
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_greenwood_the_great }
+	cost = 10
+	available = { 
+		MIR = {
+			OR = { 
+			has_government = belligerent
+			has_government = revolutionary
+				}
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		71 = {
+			add_building_construction = { type = bunker
+				 							  level = 3 
+											  instant_build = yes
+											  province = 5957 
+											  }		
+			}
+
+			199 = {
+			add_building_construction = { type = infrastructure
+				 							  level = 1 
+											  instant_build = yes
+											  province = 4630 
+											  }					
+			}
+
+			198 = {
+			add_building_construction = { type = supply_node
+				 							  level = 1 
+											  instant_build = yes
+											  province = 2994 
+											  }	
+			add_building_construction = { type = rail_way
+				 							  level = 1 
+											  instant_build = yes
+											  province = 1232
+											  }		
+			add_building_construction = { type = rail_way
+				 							  level = 1 
+											  instant_build = yes
+											  province = 2994
+											  }	
+			add_building_construction = { type = bunker
+				 							  level = 3 
+											  instant_build = yes
+											  province = 2994
+											  }	
+			add_building_construction = { type = bunker
+				 							  level = 3 
+											  instant_build = yes
+											  province = 2769
+											  }												  									  								  								  				
+			}
+		}
+	}
+	
+	focus = {
+	id = VAL_checkmate
+	icon = GFX_goal_mir_thranduil
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_prepare_to_cleanse_the_forest
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_prepare_to_cleanse_the_forest }
+	cost = 10
+	available = { 
+		MIR = {
+			OR = { 
+			has_government = belligerent
+			has_government = revolutionary
+				}
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		VAL = 
+			{ create_wargoal = 
+				{ type = puppet_wargoal_focus target = MIR } 
+				}
+		grumbling_greyfurs_idea_upgrade = yes
+		}
+	}
+	
+	focus = {
+	id = VAL_approach_the_king
+	icon = GFX_goal_mir_radagast_the_brown
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_greenwood_the_great
+	x = -2
+	y = 1
+	mutually_exclusive = { focus = VAL_prepare_to_cleanse_the_forest }
+	prerequisite = { focus = VAL_greenwood_the_great }
+	cost = 10
+	available = { 
+		MIR = {
+			OR = { 
+			has_government = unaligned
+			has_government = cooperative
+				}
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 100
+		VAL = { add_opinion_modifier = { target = MIR modifier = relieved_tensions } }
+		MIR = { add_opinion_modifier = { target = VAL modifier = relieved_tensions } }
+		}
+	}
+		
+	focus = {
+	id = VAL_exchange_gifts
+	icon = GFX_goal_mir_radagast_the_brown
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_approach_the_king
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_approach_the_king }
+	cost = 10
+	available = { 
+		MIR = {
+			OR = { 
+			has_government = unaligned
+			has_government = cooperative
+				}
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		VAL = {
+			country_event = { id = anduin.6 }
+			}
+		grumbling_greyfurs_idea_upgrade = yes
+		}
+	}
+		
+	focus = {
+	id = VAL_the_vales_confederacy
+	icon = GFX_goal_mir_radagast_the_brown
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_checkmate
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_checkmate focus = VAL_exchange_gifts }
+	prerequisite = { focus = VAL_resettle_framsburg}
+	prerequisite = { focus = VAL_lessons_from_the_east}
+	prerequisite = { focus = VAL_deal_with_gundabad}
+	cost = 5
+	available = { 
+		OR = {
+		VAL = {
+			controls_state = 61
+			}
+		GUN = {
+			OR = { 
+			has_capitulated = yes
+			is_puppet = yes
+			has_government = cooperative
+			has_government = unaligned
+					}
+				}
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		VAL = {
+		set_cosmetic_tag = CON_VAL_confederacy
+		}
+
+		remove_ideas = VAL_grumbling_greyfurs_7
+		}
+	}
+					
+	focus = {
+	id = VAL_approach_dorwinion
+	icon = GFX_goal_mir_radagast_the_brown
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_vales_confederacy
+	x = 3
+	y = 1
+	prerequisite = { focus = VAL_the_vales_confederacy }
+	cost = 10
+	available = { 
+		DOR = {
+			exists = yes
+			OR = {
+				has_government = cooperative
+				has_government = unaligned
+			}
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		DOR = {
+			country_event = { id = dorwinion.3 }
+			}
+		}
+	}
+								
+	focus = {
+	id = VAL_develop_framsburg
+	icon = GFX_goal_mir_radagast_the_brown
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_vales_confederacy
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_the_vales_confederacy }
+	cost = 10
+	available = {
+		VAL = {
+			controls_state = 69
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		69 = {
+			increase_state_category = yes
+			hidden_effect = {add_extra_state_shared_building_slots = 1}
+			add_building_construction = { type = infrastructure
+				 							  level = 1 
+											  instant_build = yes 
+											  }			
+			add_building_construction = { type = industrial_complex
+				 							  level = 2 
+											  instant_build = yes 
+											  }
+			add_building_construction = { type = arms_factory
+				 							  level = 1 
+											  instant_build = yes 
+											  }							  
+			}
+		}
+	}
+									
+	focus = {
+	id = VAL_the_university_of_framsburg
+	icon = GFX_goal_mir_radagast_the_brown
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_develop_framsburg
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_develop_framsburg }
+	cost = 10
+	available = {
+		VAL = {
+			controls_state = 69
+		}
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		add_research_slot = 1
+		swap_ideas = {
+			remove_idea = VAL_memories_of_the_éothéod_2
+			add_idea = VAL_memories_of_the_éothéod_3
+			}
+		}
+	}
+							
+	focus = {
+	id = VAL_the_stoor_commonwealth
+	icon = GFX_goal_mir_radagast_the_brown
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_vales_confederacy
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_the_vales_confederacy }
+	cost = 10
+	available = { has_completed_focus = VAL_inspire_the_halflings }
+	available_if_capitulated = yes
+	completion_reward = {
+		72 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { type = infrastructure
+				 							  level = 1 
+											  instant_build = yes 
+											  }			
+			add_building_construction = { type = industrial_complex
+				 							  level = 1
+											  instant_build = yes 
+											  }						  
+			}
+		70 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { type = infrastructure
+				 							  level = 1 
+											  instant_build = yes 
+											  }			
+			add_building_construction = { type = industrial_complex
+				 							  level = 1
+											  instant_build = yes 
+											  }						  
+			}
+		swap_ideas = {
+			remove_idea = VAL_inspired_stoors_1
+			add_idea = VAL_inspired_stoors_2
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_help_build_up_mirkwood
+	icon = GFX_goal_mir_radagast_the_brown
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_vales_confederacy
+	x = -3
+	y = 1
+	prerequisite = { focus = VAL_the_vales_confederacy }
+	cost = 10
+	available = { 
+		MIR = {
+			exists = yes
+				OR = {
+					has_government = cooperative
+					has_government = unaligned
+				}
+			}
+		}
+	available_if_capitulated = yes
+	completion_reward = {
+		83 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { type = infrastructure
+				 							  level = 1 
+											  instant_build = yes 
+											  }			
+			add_building_construction = { type = industrial_complex
+				 							  level = 1
+											  instant_build = yes 
+											  }						  
+			}
+		82 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { type = infrastructure
+				 							  level = 1 
+											  instant_build = yes 
+											  }			
+			add_building_construction = { type = industrial_complex
+				 							  level = 1
+											  instant_build = yes 
+											  }						  
+			}
+		85 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { type = infrastructure
+				 							  level = 1 
+											  instant_build = yes 
+											  }			
+			add_building_construction = { type = industrial_complex
+				 							  level = 1
+											  instant_build = yes 
+											  }						  
+			}
+		}
+	}
+			
+	focus = {
+	id = VAL_for_frodo
+	icon = GFX_goal_mir_radagast_the_brown
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_vales_confederacy
+	x = 0
+	y = 3
+	prerequisite = { focus = VAL_the_vales_confederacy}
+	cost = 10
+	available = { 
+		MOR = {
+			OR = { 
+				has_government = belligerent
+				has_government = revolutionary
+					}
+				}
+			}
+	available_if_capitulated = yes
+	completion_reward = {
+			declare_war_on = { 
+				target = MOR
+				type = topple_government
+			}
+		}
+	}
+					
+	####Dwarvish Trade Cooperative Sub-Branch
+	focus = {
+	id = VAL_normalize_dwarvish_trade
+	icon = GFX_goal_support_cooperative
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_convince_beorn
+	x = -4
+	y = 1
+	prerequisite = { focus = VAL_convince_beorn }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_popularity = {
+        ideology = cooperative
+        popularity = 0.02
+			}
+		remove_ideas = VAL_no_love_for_dwarves
+		}	
+	}
+	
+	focus = {
+	id = VAL_intensify_dwarvish_trade
+	icon = GFX_goal_support_cooperative
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_normalize_dwarvish_trade
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_normalize_dwarvish_trade }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		add_popularity = {
+       		ideology = cooperative
+        	popularity = 0.03
+			}
+		add_ideas = VAL_dwarvish_trade_deal
+		grumbling_greyfurs_idea_upgrade = yes
+		}	
+	}
+
+
+	####Belligerent Path
+	
+	focus = {
+	id = VAL_the_bear_attacks
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_house_of_beorn
+	mutually_exclusive = { focus = VAL_the_bear_wakes }
+	mutually_exclusive = { focus = VAL_the_bear_sleeps }
+	x = 13
+	y = 1
+	prerequisite = { focus = VAL_the_house_of_beorn }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_aggression_0
+			}
+		}
+	
+	focus = {
+	id = VAL_form_a_council_of_warlords
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bear_attacks
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_the_bear_attacks }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_warlord_council_0
+		add_popularity = {
+        	ideology = belligerent
+    		popularity = 0.05
+			}
+		}
+	}
+
+
+	focus = {
+	id = VAL_warn_the_orcs
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bear_attacks
+	x = -3
+	y = 1
+	prerequisite = { focus = VAL_the_bear_attacks }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		MOC = { add_opinion_modifier = { target = VAL modifier = warned } }
+		GUN = { add_opinion_modifier = { target = VAL modifier = warned } }
+		add_popularity = {
+        	ideology = belligerent
+    		popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_empower_the_woodsmen
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bear_attacks
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_the_bear_attacks }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = VAL_aggression_0
+			add_idea = VAL_aggression_1
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_antagonize_the_elves
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bear_attacks
+	x = 3
+	y = 1
+	prerequisite = { focus = VAL_the_bear_attacks }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		MIR = { add_opinion_modifier = { target = VAL modifier = antagonized } }
+		LTH = { add_opinion_modifier = { target = VAL modifier = antagonized } }
+		add_popularity = {
+        	ideology = belligerent
+    		popularity = 0.05
+			}
+		}
+	}
+	
+	focus = {
+	id = VAL_the_mirkwood_incident
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bear_attacks
+	x = 0
+	y = 2
+	prerequisite = { focus = VAL_warn_the_orcs }
+	prerequisite = { focus = VAL_form_a_council_of_warlords }
+	prerequisite = { focus = VAL_empower_the_woodsmen }
+	prerequisite = { focus = VAL_antagonize_the_elves }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		VAL = { 
+			country_event = { id = anduin.9 }
+			}
+		hidden_effect = { MIR = {
+			country_event = { id = mirkwood.19 }
+				}
+			}
+		}
+	}
+		
+	focus = {
+	id = VAL_the_fires_of_hatred
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_mirkwood_incident
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_mirkwood_incident }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		MIR = {
+			country_event = { id = mirkwood.20 }
+				}
+		swap_ideas = {
+			remove_idea = VAL_aggression_1
+			add_idea = VAL_aggression_2
+			}
+		add_ideas = VAL_grumbling_greyfurs_0
+		}
+	}
+			
+	focus = {
+	id = VAL_get_rid_of_beorn
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_fires_of_hatred
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_fires_of_hatred }
+	cost = 10
+	available = {
+		belligerent > 0.55
+	}
+	available_if_capitulated = yes
+	completion_reward = {
+		retire_character = VAL_Beorn
+			set_politics = {
+			ruling_party = belligerent
+   			elections_allowed = no
+			}
+		grumbling_greyfurs_idea_upgrade = yes
+		complete_national_focus =  VAL_our_small_friends 
+		complete_national_focus =  VAL_the_wings_of_the_mountains
+
+		}
+	}
+				
+	focus = {
+	id = VAL_realign_the_beornings
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_get_rid_of_beorn
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_get_rid_of_beorn }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+					
+	focus = {
+	id = VAL_invite_a_beorning_to_the_council
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_realign_the_beornings
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_realign_the_beornings }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+			
+	focus = {
+	id = VAL_erase_the_memory_of_beorn
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_invite_a_beorning_to_the_council
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_invite_a_beorning_to_the_council }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+	grumbling_greyfurs_idea_upgrade = yes
+		}
+	}
+			
+	focus = {
+	id = VAL_caution_to_the_wind
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_get_rid_of_beorn
+	x = -3
+	y = 1
+	prerequisite = { focus = VAL_get_rid_of_beorn }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+	195 = {
+		add_building_construction = { type = supply_node
+				 						level = 1 
+										instant_build = yes
+										province = 4779 
+										}
+	198 = {	
+		add_building_construction = { type = arms_factory
+				 							  level = 1 
+											  instant_build = yes 
+											  }	
+				}
+			}
+		}
+	}
+				
+	focus = {
+	id = VAL_submit_or_die
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_caution_to_the_wind
+	x = 0
+	y = 1
+	
+	prerequisite = { focus = VAL_caution_to_the_wind }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		GUN = {
+			country_event = { id = gundabad.4 }
+			}
+		MOC = {
+			country_event = { id = moria.10 }
+				}
+
+	grumbling_greyfurs_idea_upgrade = yes
+		}
+	}
+						
+	focus = {
+	id = VAL_dwarvish_relics
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_submit_or_die
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_submit_or_die }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+				
+	focus = {
+	id = VAL_triumph_of_the_woodsmen
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_get_rid_of_beorn
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_get_rid_of_beorn }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		
+	grumbling_greyfurs_idea_upgrade = yes
+		}
+	}
+					
+	focus = {
+	id = VAL_denigrate_the_éothéod_legacy
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_triumph_of_the_woodsmen
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_triumph_of_the_woodsmen }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+						
+	focus = {
+	id = VAL_wenbursburg
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_denigrate_the_éothéod_legacy
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_denigrate_the_éothéod_legacy }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+				
+	focus = {
+	id = VAL_start_raiding_mirkwood
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_get_rid_of_beorn
+	x = 3
+	y = 1
+	prerequisite = { focus = VAL_get_rid_of_beorn }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+	
+	grumbling_greyfurs_idea_upgrade = yes
+		}
+	}
+					
+	focus = {
+	id = VAL_infiltrate_west_mirkwood
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_start_raiding_mirkwood
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_start_raiding_mirkwood }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+						
+	focus = {
+	id = VAL_the_war_of_bear_and_bough
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_infiltrate_west_mirkwood
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_infiltrate_west_mirkwood }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+	grumbling_greyfurs_idea_upgrade = yes
+		}
+	}
+							
+	focus = {
+	id = VAL_the_kingdom_of_the_vale
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_get_rid_of_beorn
+	x = 0
+	y = 4
+	prerequisite = { focus = VAL_dwarvish_relics }
+	prerequisite = { focus = VAL_erase_the_memory_of_beorn }
+	prerequisite = { focus = VAL_wenbursburg }
+	prerequisite = { focus = VAL_the_war_of_bear_and_bough }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+								
+	focus = {
+	id = VAL_the_gaze_of_wenbur
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_kingdom_of_the_vale
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_the_kingdom_of_the_vale }
+
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+								
+	focus = {
+	id = VAL_align_angmar
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_kingdom_of_the_vale
+	x = -3
+	y = 1
+	prerequisite = { focus = VAL_the_kingdom_of_the_vale }
+
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+									
+	focus = {
+	id = VAL_build_up_the_new_capital
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_kingdom_of_the_vale
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_the_kingdom_of_the_vale }
+
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+											
+	focus = {
+	id = VAL_humiliate_the_elves
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_kingdom_of_the_vale
+	x = 3
+	y = 1
+	prerequisite = { focus = VAL_the_kingdom_of_the_vale }
+
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+								
+	focus = {
+	id = VAL_our_place_in_the_world
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	x = 32
+	y = 11
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+											
+	focus = {
+	id = VAL_join_the_east
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_place_in_the_world
+	x = -6
+	y = 1
+	prerequisite = { focus = VAL_our_place_in_the_world }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+												
+	focus = {
+	id = VAL_a_new_angmar
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_place_in_the_world
+	x = -4
+	y = 1
+	prerequisite = { focus = VAL_our_place_in_the_world }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+													
+	focus = {
+	id = VAL_join_the_white_wizard
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_place_in_the_world
+	x = -2
+	y = 1
+	prerequisite = { focus = VAL_our_place_in_the_world }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+												
+	focus = {
+	id = VAL_on_our_own
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_place_in_the_world
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_our_place_in_the_world }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+												
+	focus = {
+	id = VAL_a_deal_with_the_dark
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_place_in_the_world
+	x = 2
+	y = 1
+	prerequisite = { focus = VAL_our_place_in_the_world }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+															
+	focus = {
+	id = VAL_a_visit_to_the_homely_house
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_place_in_the_world
+	x = 4
+	y = 1
+	prerequisite = { focus = VAL_our_place_in_the_world }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+																
+	focus = {
+	id = VAL_heirs_of_eorl
+	icon = GFX_goal_support_belligerent
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_place_in_the_world
+	x = 6
+	y = 1
+	prerequisite = { focus = VAL_our_place_in_the_world }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+
+		}
+	}
+																																																				
+	####LORIEN INTERACTION
+	focus = {
+	id = VAL_the_lady_of_the_forest
+	icon = GFX_goal_lth_galadriel_queen
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	x = 2
+	y = 0
+	prerequisite = { }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_seek_an_audience
+	icon = GFX_goal_lth_galadriel_queen
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_lady_of_the_forest
+	x = -2
+	y = 1
+	mutually_exclusive = { focus = VAL_a_new_elvish_threat }
+	mutually_exclusive = { focus = VAL_align_ourselves_to_the_witch}
+	prerequisite = { focus = VAL_the_lady_of_the_forest }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_plan_for_liberation
+	icon = GFX_goal_lth_galadriel_queen
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_seek_an_audience
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_seek_an_audience }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_for_a_free_moria
+	icon = GFX_goal_lth_galadriel_queen
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_plan_for_liberation
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_plan_for_liberation }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_a_new_elvish_threat
+	icon = GFX_goal_lth_evil_galadriel
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_lady_of_the_forest
+	x = 0
+	y = 1
+	mutually_exclusive = { focus = VAL_seek_an_audience }
+	mutually_exclusive = { focus = VAL_align_ourselves_to_the_witch}
+	prerequisite = { focus = VAL_the_lady_of_the_forest }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_silvan_refugees
+	icon = GFX_goal_lth_evil_galadriel
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_a_new_elvish_threat
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_a_new_elvish_threat focus = VAL_align_ourselves_to_the_witch }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_end_the_madness
+	icon = GFX_goal_lth_evil_galadriel
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_silvan_refugees
+	x = -1
+	y = 1
+	mutually_exclusive = { focus = VAL_pledge_fealty }
+	prerequisite = { focus = VAL_silvan_refugees }
+	prerequisite = { focus = VAL_a_new_elvish_threat }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_align_ourselves_to_the_witch
+	icon = GFX_goal_lth_evil_galadriel
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_lady_of_the_forest
+	x = 2
+	y = 1
+	mutually_exclusive = { focus = VAL_seek_an_audience }
+	mutually_exclusive = { focus = VAL_a_new_elvish_threat }
+	prerequisite = { focus = VAL_the_lady_of_the_forest }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_pledge_fealty
+	icon = GFX_goal_lth_evil_galadriel
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_silvan_refugees
+	x = 1
+	y = 1
+	mutually_exclusive = { focus = VAL_end_the_madness }
+	prerequisite = { focus = VAL_silvan_refugees }
+	prerequisite = { focus = VAL_align_ourselves_to_the_witch }
+	cost = 5
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	####STOORS INTERACTION
+	focus = {
+	id = VAL_our_small_friends
+	icon = GFX_goal_lth_frodo_valinor
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	x = 10
+	y = 0
+	prerequisite = { }
+	cost = 1
+	available = { always = false }
+	available_if_capitulated = yes
+	completion_reward = {
+		}
+	}
+
+	focus = {
+	id = VAL_appeal_to_the_stoors
+	icon = GFX_goal_lth_frodo_valinor
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_small_friends
+	x = 2
+	y = 1
+	mutually_exclusive = { focus = VAL_share_breakfasts }
+	mutually_exclusive = { focus = VAL_crush_them }
+	prerequisite = {focus = VAL_our_small_friends }
+	cost = 5
+	available = { controls_state = 70 controls_state = 72 
+				  has_government = cooperative			  		
+	}
+	available_if_capitulated = no	
+		completion_reward = {
+
+				every_owned_state = {
+					limit = { 
+						OR = {
+							has_dynamic_modifier = { modifier = stoors }
+						}
+					}
+					remove_dynamic_modifier = { modifier = stoors }
+				}
+
+				add_ideas = VAL_inspired_stoors_0
+
+			}
+	}
+
+	focus = {
+	id = VAL_inspire_the_halflings
+	icon = GFX_goal_lth_frodo_valinor
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_appeal_to_the_stoors
+	x = 0
+	y = 1
+	prerequisite = {focus = VAL_appeal_to_the_stoors }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = VAL_inspired_stoors_0
+			add_idea = VAL_inspired_stoors_1
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_share_breakfasts
+	icon = GFX_goal_lth_frodo_valinor
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_small_friends
+	x = 0
+	y = 1
+	mutually_exclusive = { focus = VAL_appeal_to_the_stoors }
+	mutually_exclusive = { focus = VAL_crush_them }
+	prerequisite = {focus = VAL_our_small_friends }
+	cost = 5
+	available = { controls_state = 70 controls_state = 72 
+				  has_government = unaligned
+	}
+	available_if_capitulated = no	
+		completion_reward = {
+
+				every_owned_state = {
+					limit = { 
+						OR = {
+							has_dynamic_modifier = { modifier = stoors }
+						}
+					}
+					remove_dynamic_modifier = { modifier = stoors }
+				}
+			VAL = { add_opinion_modifier = { target = SHI modifier = respected_customs } }
+			SHI = { add_opinion_modifier = { target = VAL modifier = respected_customs } }
+			}
+		}
+
+	focus = {
+	id = VAL_reach_a_compromise
+	icon = GFX_goal_lth_frodo_valinor
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_share_breakfasts
+	x = 0
+	y = 1
+	prerequisite = {focus = VAL_share_breakfasts }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		70 = {
+			add_resource = {
+				type = oil
+				amount = 10
+				}
+			}
+		72 = {
+			add_resource = {
+				type = oil
+				amount = 15
+				}
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_crush_them
+	icon = GFX_goal_lth_frodo_valinor
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_our_small_friends
+	x = -2
+	y = 1
+	mutually_exclusive = { focus = VAL_appeal_to_the_stoors }
+	mutually_exclusive = { focus = VAL_share_breakfasts }
+	prerequisite = {focus = VAL_our_small_friends }
+	cost = 5
+	available = { controls_state = 70 controls_state = 72 
+				  has_government = belligerent	
+	}
+
+	available_if_capitulated = no	
+		completion_reward = {
+
+				every_owned_state = {
+					limit = { 
+						OR = {
+							has_dynamic_modifier = { modifier = stoors }
+						}
+					}
+					remove_dynamic_modifier = { modifier = stoors }
+				}
+			VAL = { add_opinion_modifier = { target = SHI modifier = crushed_the_stoors } }
+			SHI = { add_opinion_modifier = { target = VAL modifier = crushed_the_stoors } }
+			}
+	}
+
+	focus = {
+	id = VAL_meat_shields
+	icon = GFX_goal_lth_frodo_valinor
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_crush_them
+	x = 0
+	y = 1
+	prerequisite = {focus = VAL_crush_them }
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_stoor_press_gangs
+		}
+	}
+
+	####EAGLES INTERACTION
+	focus = {
+	id = VAL_the_wings_of_the_mountains
+	icon = GFX_goal_generic_territory_or_war
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	x = 10
+	y = 3
+	prerequisite = { }
+	cost = 1
+	available = { always = false }
+	available_if_capitulated = yes
+	completion_reward = {
+		}
+	}
+
+	focus = {
+	id = VAL_clip_their_wings
+	icon = GFX_goal_generic_territory_or_war
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_wings_of_the_mountains
+	x = 1
+	y = 1
+	mutually_exclusive = { focus = VAL_seek_aid_from_radagast }
+	prerequisite = {focus = VAL_the_wings_of_the_mountains }
+	cost = 5
+	available_if_capitulated = yes
+	available = { controls_state = 69 controls_state = 197
+		has_government = belligerent
+	}
+	completion_reward = {
+		add_manpower = -500
+		add_political_power = 75
+		add_popularity = {
+        	ideology = belligerent
+    		popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+	id = VAL_chase_them_off
+	icon = GFX_goal_generic_territory_or_war
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_clip_their_wings
+	x = 0
+	y = 1
+	prerequisite = {focus = VAL_clip_their_wings }
+	cost = 10
+	available_if_capitulated = yes
+	available = { controls_state = 69 controls_state = 197
+		has_government = belligerent
+	}
+	completion_reward = {
+		add_manpower = -1500
+		add_popularity = {
+        	ideology = belligerent
+    		popularity = 0.15
+			}
+		69 = {
+			damage_building = {
+    			type = infrastructure
+    			damage = 1
+				}
+			}
+		197 = {
+			damage_building = {
+    			type = infrastructure
+    			damage = 2
+				}
+			}
+
+		every_owned_state = {
+			limit = { 
+				OR = {
+					has_dynamic_modifier = { modifier = nearby_eagles }
+						}
+					}
+					remove_dynamic_modifier = { modifier = nearby_eagles }
+				}
+		}
+	}
+
+	focus = {
+	id = VAL_seek_aid_from_radagast
+	icon = GFX_goal_generic_territory_or_war
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_wings_of_the_mountains
+	x = -1
+	y = 1
+	mutually_exclusive = { focus = VAL_clip_their_wings }
+	prerequisite = {focus = VAL_the_wings_of_the_mountains }
+	available = { controls_state = 69 controls_state = 197 
+		OR = { 
+			has_government = cooperative
+			has_government = unaligned
+		}			  		
+	}
+	cost = 10
+	available_if_capitulated = yes
+	completion_reward = {
+		add_ideas = VAL_radagast_advisor_idea
+		}
+	}
+
+	focus = {
+	id = VAL_peace_talks
+	icon = GFX_goal_generic_territory_or_war
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_seek_aid_from_radagast
+	x = 0
+	y = 1
+	prerequisite = {focus = VAL_seek_aid_from_radagast }
+	cost = 10
+	available_if_capitulated = yes
+	available = { controls_state = 69 controls_state = 197 
+		OR = { 
+			has_government = cooperative
+			has_government = unaligned
+		}			  		
+	}
+	completion_reward = {
+		every_owned_state = {
+			limit = { 
+				OR = {
+					has_dynamic_modifier = { modifier = nearby_eagles }
+						}
+					}
+					remove_dynamic_modifier = { modifier = nearby_eagles }
+				}
+			VAL = {
+				set_technology = { 
+					eagle_domestication = 1
+				}
+			}
+		}
+	}
+
+	####INDUSTRY & TRADE
+	focus = {
+	id = VAL_a_plentiful_land
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	x = 62
+	y = 0
+	prerequisite = { }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_landscaping
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_a_plentiful_land
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_a_plentiful_land }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+	
+	focus = {
+	id = VAL_intensify_honey_production_in_carrock
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_a_plentiful_land
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_a_plentiful_land }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_extensify_honey_production
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_a_plentiful_land
+	x = 0
+	y = 2
+	prerequisite = { focus = VAL_landscaping }
+	prerequisite = { focus = VAL_intensify_honey_production_in_carrock }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_spread_the_honey
+	icon = GFX_goal_generic_trade
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_extensify_honey_production
+	x = -5
+	y = 1
+	mutually_exclusive = {focus = VAL_keep_the_honey }
+	prerequisite = { focus = VAL_extensify_honey_production }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_offer_trade_to_our_kin
+	icon = GFX_goal_generic_trade
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_spread_the_honey
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_spread_the_honey }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_help_rebuild_rohan
+	icon = GFX_goal_generic_trade
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_offer_trade_to_our_kin
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_offer_trade_to_our_kin }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_help_rebuild_dale
+	icon = GFX_goal_generic_trade
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_offer_trade_to_our_kin
+	x = -2
+	y = 1
+	prerequisite = { focus = VAL_offer_trade_to_our_kin }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_offer_trade_to_the_dwarves
+	icon = GFX_goal_generic_trade
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_spread_the_honey
+	x = -2
+	y = 1
+	prerequisite = { focus = VAL_spread_the_honey }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_offer_trade_to_the_elves
+	icon = GFX_goal_generic_trade
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_spread_the_honey
+	x = -4
+	y = 1
+	prerequisite = { focus = VAL_spread_the_honey }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_offer_trade_to_the_rangers
+	icon = GFX_goal_generic_trade
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_spread_the_honey
+	x = -6
+	y = 1
+	prerequisite = { focus = VAL_spread_the_honey }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_keep_the_honey
+	icon = GFX_goal_lth_food_resource_storage
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_extensify_honey_production
+	x = -3
+	y = 1
+	mutually_exclusive = {focus = VAL_spread_the_honey }
+	prerequisite = { focus = VAL_extensify_honey_production }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_gaining_knowledge
+	icon = GFX_goal_generic_production2
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_extensify_honey_production
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_extensify_honey_production }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_wisdom_of_the_vale
+	icon = GFX_focus_research
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_gaining_knowledge
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_gaining_knowledge }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_secret_research
+	icon = GFX_focus_research
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_wisdom_of_the_vale
+	x = -2
+	y = 1
+	prerequisite = { focus = VAL_wisdom_of_the_vale }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_build_bakeries
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_extensify_honey_production
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_extensify_honey_production }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_build_more_bakeries
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_build_bakeries
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_build_bakeries }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_offer_hives_to_the_stoors
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_build_more_bakeries
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_build_more_bakeries }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_emergency_armament_efforts
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_build_more_bakeries
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_build_more_bakeries }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_seal_the_mountain_passes
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_emergency_armament_efforts
+	x = -3
+	y = 1
+	mutually_exclusive = {focus = VAL_reopen_the_mountain_passes }
+	prerequisite = { focus = VAL_emergency_armament_efforts }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_reopen_the_mountain_passes
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_emergency_armament_efforts
+	x = -5
+	y = 1
+	mutually_exclusive = {focus = VAL_seal_the_mountain_passes }
+	prerequisite = { focus = VAL_emergency_armament_efforts }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_fixing_up_the_vale
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_emergency_armament_efforts
+	x = -7
+	y = 1
+	prerequisite = { focus = VAL_emergency_armament_efforts }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_from_carrock_to_limlaith
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_fixing_up_the_vale
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_fixing_up_the_vale }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_from_carrock_to_greylin
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_fixing_up_the_vale
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_fixing_up_the_vale }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_from_carrock_to_framsburg
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_from_carrock_to_greylin
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_from_carrock_to_greylin }
+	prerequisite = { focus = VAL_from_carrock_to_limlaith }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_from_carrock_to_fanuidhol
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_from_carrock_to_limlaith
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_from_carrock_to_greylin }
+	prerequisite = { focus = VAL_from_carrock_to_limlaith }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_include_the_lower_vale
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_fixing_up_the_vale
+	x = 0
+	y = 3
+	prerequisite = { focus = VAL_from_carrock_to_fanuidhol }
+	prerequisite = { focus = VAL_from_carrock_to_framsburg }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_major_landscaping_effort
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_include_the_lower_vale
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_include_the_lower_vale }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_increase_wood_production
+	icon = GFX_goal_generic_resource_wood
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_extensify_honey_production
+	x = 3
+	y = 1
+	prerequisite = { focus = VAL_extensify_honey_production }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_disregard_elvish_warnings
+	icon = GFX_goal_burn_fangorn_forest
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_increase_wood_production
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_increase_wood_production }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_woodsman_industry
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_emergency_armament_efforts
+	x = 4
+	y = 1
+	prerequisite = { focus = VAL_emergency_armament_efforts }
+	prerequisite = { focus = VAL_disregard_elvish_warnings }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_build_a_wartime_industry
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_emergency_armament_efforts
+	x = 2
+	y = 1
+	prerequisite = { focus = VAL_emergency_armament_efforts }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+
+	focus = {
+	id = VAL_secrets_of_wizardry
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_emergency_armament_efforts
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_emergency_armament_efforts }
+	prerequisite = { focus = VAL_wisdom_of_the_vale }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+
+	focus = {
+	id = VAL_expand_our_wartime_industry
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_build_a_wartime_industry
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_build_a_wartime_industry }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_woodsmen_resource_efficiency
+	icon = GFX_goal_generic_construction
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_woodsman_industry
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_woodsman_industry }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	####Military Branch
+
+	focus = {
+	id = VAL_the_bears_of_the_vales
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	x = 81
+	y = 0
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_minor_fortification_effort
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bears_of_the_vales
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_the_bears_of_the_vales }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_standardize_weaponry
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bears_of_the_vales
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_the_bears_of_the_vales }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_wardens_of_the_anduin
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_bears_of_the_vales
+	x = 0
+	y = 2
+	prerequisite = { focus = VAL_standardize_weaponry }
+	prerequisite = { focus = VAL_minor_fortification_effort }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_we_own_the_river
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_wardens_of_the_anduin
+	x = -9
+	y = 1
+	prerequisite = { focus = VAL_wardens_of_the_anduin }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_beorning_warriors
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_we_own_the_river
+	x = -3
+	y = 1
+	prerequisite = { focus = VAL_we_own_the_river }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_the_skinchangers
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_beorning_warriors
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_beorning_warriors }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_greyfur_instructors
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_the_skinchangers
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_the_skinchangers }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_elite_skinchangers
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_greyfur_instructors
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_greyfur_instructors }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_stoor_shirrifs
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_we_own_the_river
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_we_own_the_river }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_draft_the_stoors
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_stoor_shirrifs
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_stoor_shirrifs }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_éothéod_horsemen
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_we_own_the_river
+	x = 1
+	y = 1
+	mutually_exclusive = { focus = VAL_warlords_of_mirkwood }
+	prerequisite = { focus = VAL_we_own_the_river }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_train_the_new_éothéod
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_éothéod_horsemen
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_éothéod_horsemen }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_éothéod_instructors
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_train_the_new_éothéod
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_train_the_new_éothéod }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_warlords_of_mirkwood
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_we_own_the_river
+	x = 3
+	y = 1
+	mutually_exclusive = { focus = VAL_éothéod_horsemen }
+	prerequisite = { focus = VAL_we_own_the_river }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_woodsman_instructors
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_warlords_of_mirkwood
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_warlords_of_mirkwood }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_veterans_of_the_mirkwood_war
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_woodsman_instructors
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_woodsman_instructors }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_plans_for_a_doctrine
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_wardens_of_the_anduin
+	x = 8
+	y = 1
+	prerequisite = { focus = VAL_wardens_of_the_anduin }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_speed_is_key
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_plans_for_a_doctrine
+	x = -2
+	y = 1
+	mutually_exclusive = { focus = VAL_plans_win_wars }
+	mutually_exclusive = { focus = VAL_fire_first }
+	prerequisite = { focus = VAL_plans_for_a_doctrine }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_cavalry_charges
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_speed_is_key
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_speed_is_key }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_utilize_war_chariots
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_cavalry_charges
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_cavalry_charges }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_éothéod_knights
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_utilize_war_chariots
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_utilize_war_chariots }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_plans_win_wars
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_plans_for_a_doctrine
+	x = 0
+	y = 1
+	mutually_exclusive = { focus = VAL_speed_is_key }
+	mutually_exclusive = { focus = VAL_fire_first }
+	prerequisite = { focus = VAL_plans_for_a_doctrine }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_contingency_plans
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_plans_win_wars
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_plans_win_wars }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_a_masterplan
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_contingency_plans
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_contingency_plans }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_beorning_planners
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_a_masterplan
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_a_masterplan }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_fire_first
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_plans_for_a_doctrine
+	x = 2
+	y = 1
+	mutually_exclusive = { focus = VAL_speed_is_key }
+	mutually_exclusive = { focus = VAL_plans_win_wars }
+	prerequisite = { focus = VAL_plans_for_a_doctrine }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_more_firepower
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_fire_first
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_fire_first }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_peppering_strategies
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_more_firepower
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_more_firepower }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_woodsman_hunters
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_peppering_strategies
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_peppering_strategies }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_emergency_fortification_effort
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_wardens_of_the_anduin
+	x = 0
+	y = 1
+	prerequisite = { focus = VAL_wardens_of_the_anduin }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_fortify_the_west
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_emergency_fortification_effort
+	x = -3
+	y = 1
+	prerequisite = { focus = VAL_emergency_fortification_effort }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_fortify_the_north
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_emergency_fortification_effort
+	x = -1
+	y = 1
+	prerequisite = { focus = VAL_emergency_fortification_effort }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_fortify_the_carrock_vale
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_emergency_fortification_effort
+	x = 1
+	y = 1
+	prerequisite = { focus = VAL_emergency_fortification_effort }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_fortify_the_eastern_bank
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_emergency_fortification_effort
+	x = 3
+	y = 1
+	prerequisite = { focus = VAL_emergency_fortification_effort }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	focus = {
+	id = VAL_the_anduin_wall
+	icon = GFX_goal_generic_allies_build_infantry
+	ai_will_do = { factor = 3 }
+	search_filters = { FOCUS_FILTER_POLITICAL }
+	relative_position_id = VAL_emergency_fortification_effort
+	x = 0
+	y = 2
+	prerequisite = { focus = VAL_fortify_the_eastern_bank }
+	prerequisite = { focus = VAL_fortify_the_carrock_vale }
+	prerequisite = { focus = VAL_fortify_the_north }
+	prerequisite = { focus = VAL_fortify_the_west }
+	cost = 1
+	available_if_capitulated = yes
+	completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+
+
+
+
+
+}
